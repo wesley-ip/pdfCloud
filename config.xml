@@ -2,10 +2,10 @@
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	<name>pdfCloud</name>
 	<description>
-		Working pdf on phonegap
+		Testing PDF Cloud on Phonegap
 	</description>
-	<author email="wesley@ipestudio.com" href="http://ipestudio.com.br">
-		Wesley Henrique Francisco
+	<author email="wesley@ipestudio.com" href="http://www.ipestudio.com.br">
+		Image Press Team
 	</author>
 	<feature name="http://api.phonegap.com/1.0/device" />
 	<preference name="permissions" value="none" />
@@ -47,10 +47,19 @@
 	<gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
 	<gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
 	<gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
+	<access origin="http://127.0.0.1*" />
 
-	<feature name="InAppBrowser">
-		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+	<feature name="File">
+		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
+		<param name="ios-package" value="CDVFile" />
 	</feature>
 
-	<access origin="http://127.0.0.1*" />
+	<feature name="FileTransfer">
+		<param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+		<param name="ios-package" value="CDVFileTransfer" />
+	</feature>
+
+	<gap:plugin name="org.apache.cordova.file" />
+	<gap:plugin name="org.apache.cordova.filetransfer" />
+	
 </widget>
