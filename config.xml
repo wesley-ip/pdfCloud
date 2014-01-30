@@ -59,7 +59,7 @@
 		<param name="ios-package" value="CDVFileTransfer" />
 	</feature>
 
-	<gap:plugin name="org.apache.cordova.file" />
-	<gap:plugin name="org.apache.cordova.filetransfer" />
+	<gap:plugin name="com.phonegap.plugins.file" />
+	<gap:plugin name="com.phonegap.plugins.filetransfer" />
 	
 </widget>
