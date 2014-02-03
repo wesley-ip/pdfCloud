@@ -1,3 +1,6 @@
+var pictureSource;
+var destinationType;
+
 var app = {
 
 	initialize: function() {
@@ -9,6 +12,9 @@ var app = {
 	},
 
 	onDeviceReady: function() {
+		pictureSource = navigator.camera.PictureSourceType;
+		destinationType = navigator.camera.DestinationType;
+
 		// var ref = window.open('http://www.google.com.br', '_blank', 'location=yes');
 		// ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
 		// ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
@@ -17,7 +23,10 @@ var app = {
 	},
 
 	capturePhoto: function(){
-		navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {sourceType:1,quality:60});
+		navigator.camera.getPicture(app.onPhotoDataSuccess, app.onFail, {
+			quality: 60,
+			destinationType: destinationType.DATA_URL
+		});
 	},
 
 	onPhotoDataSuccess: function(imageData) {
@@ -35,7 +44,7 @@ var app = {
 	},
 
 	onFail: function(message) {
-		alert('Erro: '+message);
+		alert('Erro: ' + message);
 
 		navigator.notification.alert(
 			'Ocorreu um erro no processo, tente novamente.', // mensagem
