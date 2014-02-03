@@ -23,7 +23,7 @@ var app = {
 	},
 
 	capturePhoto: function(){
-		navigator.camera.getPicture(app.onPhotoDataSuccess, app.onFail, {
+		navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
 			quality: 60,
 			destinationType: destinationType.DATA_URL
 		});
@@ -40,7 +40,6 @@ var app = {
 			'Foto', // titulo
 			'OK' // nome do botao
 		);
-
 	},
 
 	onFail: function(message) {
