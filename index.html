@@ -29,6 +29,7 @@
 				<h1>Lorem Ipsum</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, sint, cum, fuga repudiandae quae harum eveniet totam culpa unde quos aut distinctio dicta in assumenda eius. Iste tenetur molestiae a.</p>
 				<button class="ui-btn ui-corner-all ui-icon-camera ui-btn-icon-left" onclick="app.capturePhoto();">Camera</button>
+				<button onclick="testeCamera()">teste camera</button>
 				<img src="" id="photoImage" style="display: none; align:center;" width="200" height="200">
 			</div>
 
@@ -40,6 +41,48 @@
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-		<!-- <script src="http://jsconsole.com/remote.js?30ABBBBA-4302-4836-A622-1D7A2B0F40A2"></script> -->
+		<script>
+
+		var popover = new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
+		var options = {
+			quality         : 50,
+			destinationType : Camera.DestinationType.DATA_URL,
+			sourceType      : Camera.PictureSource.SAVEDPHOTOALBUM,
+			popoverOptions  : popover
+		};
+
+		function testeCamera() {
+			console.log("testeCamera");
+			navigator.camera.getPicture(onSuccess, onFail, options);
+		}
+
+		function onSuccess(imageData) {
+			console.log("onSuccess");
+			var image = document.getElementById('photoImage'); // pegando elemento img
+			image.src = "data:image/jpeg;base64," + imageData; // jogando a imagem no elemento
+			image.style.display = 'block'; // aplica block ao elemento image
+		}
+
+		function onFail(message) {
+			alert('Failed because: ' + message);
+		}
+
+		var cameraPopoverHandle = navigator.camera.getPicture(
+			onSuccess,
+			onFail,
+			{ 
+				destinationType: Camera.DestinationType.FILE_URI,
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY 
+			}
+		);
+
+		// Reposition the popover if the orientation changes.
+		window.onorientationchange = function() {
+			var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, 0);
+			cameraPopoverHandle.setPosition(cameraPopoverOptions);
+		}
+
+		</script>
+		<script src="http://jsconsole.com/remote.js?CBFD26F7-F61F-4ADC-815E-C6B56547CF63"></script>
 	</body>
 </html>

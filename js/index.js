@@ -1,3 +1,6 @@
+var pictureSource;
+var destinationType;
+
 var app = {
 
 	initialize: function() {
@@ -9,6 +12,10 @@ var app = {
 	},
 
 	onDeviceReady: function() {
+		console.log("onDeviceReady");
+
+		pictureSource = navigator.camera.PictureSourceType;
+		destinationType = navigator.camera.DestinationType;
 
 		// var ref = window.open('http://www.google.com.br', '_blank', 'location=yes');
 		// ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
@@ -18,14 +25,23 @@ var app = {
 	},
 
 	capturePhoto: function(){
-		navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
-			quality: 60,
-			destinationType: navigator.camera.DestinationType.DATA_URL
+		console.log("capturePhoto");
+		navigator.camera.getPicture(app.onPhotoDataSuccess, app.onFail, {
+			quality: 50,
+			destinationType: destinationType.DATA_URL
+
+			//destinationType: navigator.camera.DestinationType.DATA_URL
+
+			//destinationType: navigator.camera.DestinationType.FILE_URI,
+			//sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+
+			//destinationType: Camera.DestinationType.DATA_URL
 		});
 	},
 
 	onPhotoDataSuccess: function(imageData) {
-		var image = document.getElementById('photoImage'); // pegando elemento img	
+		console.log("onPhotoDataSuccess");
+		var image = document.getElementById('photoImage'); // pegando elemento img
 		image.src = "data:image/jpeg;base64," + imageData; // jogando a imagem no elemento
 		image.style.display = 'block'; // aplica block ao elemento image
 
@@ -38,6 +54,7 @@ var app = {
 	},
 
 	onFail: function(message) {
+		console.log("onFail");
 		alert('Erro: ' + message);
 
 		navigator.notification.alert(
