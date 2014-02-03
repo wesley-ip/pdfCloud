@@ -28,7 +28,8 @@
 			<div role="main" class="ui-content">
 				<h1>Lorem Ipsum</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, sint, cum, fuga repudiandae quae harum eveniet totam culpa unde quos aut distinctio dicta in assumenda eius. Iste tenetur molestiae a.</p>
-
+				<button class="ui-btn ui-corner-all ui-icon-camera ui-btn-icon-left" onclick="app.capturePhoto();">Camera</button>
+				<img src="" id="photoImage" style="display: none; align:center;" width="200" height="200">
 			</div>
 
 			<div data-role="footer">
@@ -38,11 +39,10 @@
 
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="phonegap.js"></script>
-		<script type="text/javascript" src="js/Camera.js"></script>
-		<script type="text/javascript" src="js/FileTransfer.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 			app.initialize();
 		</script>
+		<script src="http://jsconsole.com/remote.js?30ABBBBA-4302-4836-A622-1D7A2B0F40A2"></script>
 	</body>
 </html>
