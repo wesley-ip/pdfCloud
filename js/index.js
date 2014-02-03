@@ -18,7 +18,7 @@ var app = {
 
 	capturePhoto: function(){
 		navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {sourceType:1,quality:60});
-	}
+	},
 
 	onPhotoDataSuccess: function(imageData) {
 		var image = document.getElementById('photoImage'); // pegando elemento img
@@ -46,3 +46,5 @@ var app = {
 	}
 
 };
+
+app.initialize();
